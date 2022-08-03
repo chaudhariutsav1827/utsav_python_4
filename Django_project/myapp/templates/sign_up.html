@@ -8,7 +8,50 @@
 	<title></title>
 </head>
 <body>
-<h1>Sign up page</h1>
+<center>
+	<h1>Sign up</h1>
+	{% if msg %}
+		<b style="color=blueviolet;">{{msg}}</b>
+	{% endif %}
+	<form name="sign up" method="post" action="{% url 'sign up' %}">
+		{% csrf_token%}
+		<table>
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" name="fname"></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" name="lname"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="email"></td>
+			</tr>
+			<tr>
+				<td>Mobile</td>
+				<td><input type="text" name="mobile"></td>
+			</tr>
+			<tr>
+				<td>Adress</td>
+				<td><textarea rows="5" cols="22" name="address"></textarea></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="Password" name="password"></td>
+			</tr>
+			<tr>
+				<td>Confirm Password</td>
+				<td><input type="Password" name="cpassword"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" name="action" value="Sign up" class="btn btn-primary">
+				</td>
+			</tr>
+		</table>
+	</form>
+</center>
 </body>
 </html>
 {% endblock %}

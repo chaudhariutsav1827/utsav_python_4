@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      tr,td{
+        padding: 11px;
+      }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -20,8 +25,13 @@
       <li><a href="{% url 'about' %}">About</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="{% url 'sign up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      {% if request.session.email %}
+        <li><a href="{% url 'change_password' %}"><span class="glyphicon glyphicon-edit"></span> Change Password</a></li>
+        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout({{request.session.fname}})</a></li>
+      {% else %}
+        <li><a href="{% url 'sign up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      {% endif %} 
     </ul>
   </div>
 </nav>	
